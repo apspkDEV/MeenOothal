@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://bjjuvuqhj87cr"]
+
+[ext_resource type="Texture2D" uid="uid://btxj47yqkumfc" path="res://Sprites/silverfih.png" id="1_5h6k0"]
+[ext_resource type="Script" uid="uid://cn5unh640q6ap" path="res://Scripts/MeenControls.cs" id="2_mrjw3"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xrivr"]
+radius = 32.4
+height = 234.4
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_xrivr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xrivr"]
+size = Vector2(1920, 72)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_5h6k0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xrivr"]
+
+[node name="LevelSandbox" type="Node2D" unique_id=1856448929]
+
+[node name="Fih" type="RigidBody2D" parent="." unique_id=1173886342]
+
+[node name="Silverfih" type="Sprite2D" parent="Fih" unique_id=290106683]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("1_5h6k0")
+offset = Vector2(-51, -7)
+
+[node name="FihCol" type="CollisionShape2D" parent="Fih" unique_id=118949233]
+position = Vector2(-17, -5)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_xrivr")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1340471152]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1585934453]
+position = Vector2(0, 504)
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=1635461892]
+scale = Vector2(1920, 71.5)
+texture = SubResource("CanvasTexture_xrivr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1413198856]
+shape = SubResource("RectangleShape2D_xrivr")
+
+[node name="Gum" type="RigidBody2D" parent="." unique_id=1602983749 node_paths=PackedStringArray("GumCol", "GumSpr")]
+position = Vector2(107, 6)
+continuous_cd = 1
+script = ExtResource("2_mrjw3")
+GumCol = NodePath("CollisionShape2D")
+GumSpr = NodePath("GumSpr")
+GrowRate = 10.0
+RiseRate = 1000.0
+MinRadius = 10.0
+MaxRadius = 100.0
+
+[node name="GumSpr" type="Sprite2D" parent="Gum" unique_id=30891764]
+modulate = Color(1, 0.4627451, 1, 1)
+position = Vector2(-6.2584877e-06, 1.4305115e-06)
+scale = Vector2(20, 20)
+texture = SubResource("CanvasTexture_5h6k0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Gum" unique_id=522407652]
+shape = SubResource("CircleShape2D_xrivr")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="." unique_id=1719900800]
+position = Vector2(99, 8)
+node_a = NodePath("../Gum")
+node_b = NodePath("../Fih")
