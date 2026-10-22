@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://b8b1gj70dilxs"]
+
+[ext_resource type="Script" uid="uid://unyhvl7rgce0" path="res://Scripts/Ninja.cs" id="1_xy126"]
+[ext_resource type="PackedScene" uid="uid://dwbfcmhd58op3" path="res://Holomorphs/Obst_Shuriken.tscn" id="2_fd5mu"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_13qdw"]
+
+[node name="Ninja" type="Node2D" unique_id=1453527115 node_paths=PackedStringArray("ShootCD")]
+script = ExtResource("1_xy126")
+Shuriken = ExtResource("2_fd5mu")
+ShootCD = NodePath("Timer")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1461929445]
+modulate = Color(0.27022192, 0.27022192, 0.2702219, 1)
+scale = Vector2(51.749897, 99.25)
+texture = SubResource("CanvasTexture_13qdw")
+
+[node name="Timer" type="Timer" parent="." unique_id=1190621532]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="Fire"]

@@ -5,44 +5,464 @@
 [ext_resource type="PackedScene" uid="uid://dk8co8pvtpc6j" path="res://Holomorphs/Obst_Spike.tscn" id="3_mrjw3"]
 [ext_resource type="PackedScene" uid="uid://2j7uqwxj5gj6" path="res://Holomorphs/Object_Fish.tscn" id="4_qd6nx"]
 [ext_resource type="PackedScene" uid="uid://dljbo1x8re3d8" path="res://Holomorphs/Object_Gum.tscn" id="5_0ehxk"]
+[ext_resource type="Texture2D" uid="uid://cm1o7eh1kdc5m" path="res://Sprites/1hhv9m.jpg" id="5_gila6"]
 [ext_resource type="PackedScene" uid="uid://dgb6odysrpp7n" path="res://Holomorphs/Obst_Laser.tscn" id="6_gu8el"]
 [ext_resource type="PackedScene" uid="uid://dydrnaxtb3kic" path="res://Holomorphs/Object_Spring.tscn" id="7_cskhc"]
-[ext_resource type="PackedScene" uid="uid://dwbfcmhd58op3" path="res://Holomorphs/Obst_Shuriken.tscn" id="8_q63y7"]
+[ext_resource type="PackedScene" uid="uid://d6jjwq6jn43u" path="res://Holomorphs/Object_Checkpoint.tscn" id="8_cskhc"]
+[ext_resource type="PackedScene" uid="uid://b8b1gj70dilxs" path="res://Holomorphs/Obst_Ninja.tscn" id="9_0ehxk"]
+[ext_resource type="Script" uid="uid://jrfaitb88pox" path="res://Scripts/CheckpointManager.cs" id="11_cskhc"]
+[ext_resource type="PackedScene" uid="uid://b35cskmvwma0e" path="res://Holomorphs/UI_Fih.tscn" id="12_gila6"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_xrivr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xrivr"]
+size = Vector2(74, 492)
 
 [node name="LevelSandbox" type="Node2D" unique_id=1856448929]
 
-[node name="GameManager" type="Node" parent="." unique_id=1576994123]
+[node name="GameManager" type="Node" parent="." unique_id=1576994123 node_paths=PackedStringArray("DeathText")]
 script = ExtResource("1_xosgj")
+DeathText = NodePath("../FihUI/CanvasLayer/DeathText")
 
-[node name="Spike2" parent="." unique_id=561044888 instance=ExtResource("3_mrjw3")]
-position = Vector2(64, 475)
+[node name="Spring" parent="." unique_id=601045878 instance=ExtResource("7_cskhc")]
+position = Vector2(4994, -329)
 
-[node name="Spike3" parent="." unique_id=621353998 instance=ExtResource("3_mrjw3")]
-position = Vector2(125, 475)
+[node name="Grounds" type="Node" parent="." unique_id=533380736]
 
-[node name="Ground" parent="." unique_id=1655194842 instance=ExtResource("2_lmxa2")]
+[node name="Ground" parent="Grounds" unique_id=1655194842 instance=ExtResource("2_lmxa2")]
 position = Vector2(0, 504)
 
-[node name="Ground2" parent="." unique_id=1944018581 instance=ExtResource("2_lmxa2")]
+[node name="Ground9" parent="Grounds" unique_id=1276427387 instance=ExtResource("2_lmxa2")]
+position = Vector2(3731, -758)
+scale = Vector2(0.27999997, 1)
+
+[node name="Ground19" parent="Grounds" unique_id=1932054048 instance=ExtResource("2_lmxa2")]
+position = Vector2(8999, -2106.0005)
+rotation = -0.5640036
+scale = Vector2(0.27999997, 1)
+
+[node name="Ground20" parent="Grounds" unique_id=416842855 instance=ExtResource("2_lmxa2")]
+position = Vector2(9242, -1861.9998)
+rotation = -0.5640036
+scale = Vector2(0.27999997, 1)
+
+[node name="Ground21" parent="Grounds" unique_id=2053189532 instance=ExtResource("2_lmxa2")]
+position = Vector2(9854, -1913.0002)
+rotation = -0.5640036
+scale = Vector2(0.27999997, 1)
+
+[node name="Ground22" parent="Grounds" unique_id=1803304843 instance=ExtResource("2_lmxa2")]
+position = Vector2(10021, -2333)
+rotation = -0.5640036
+scale = Vector2(0.27999997, 1)
+
+[node name="Ground2" parent="Grounds" unique_id=1944018581 instance=ExtResource("2_lmxa2")]
 position = Vector2(1795, 69)
 rotation = -0.47514194
 
-[node name="Ground3" parent="." unique_id=1129903527 instance=ExtResource("2_lmxa2")]
+[node name="Ground3" parent="Grounds" unique_id=1129903527 instance=ExtResource("2_lmxa2")]
 position = Vector2(3592, -366)
 
-[node name="Fih" parent="." unique_id=1287527928 instance=ExtResource("4_qd6nx")]
-position = Vector2(486, -50)
+[node name="Ground4" parent="Grounds" unique_id=2140570852 instance=ExtResource("2_lmxa2")]
+position = Vector2(7, -236)
 
-[node name="Gum" parent="." unique_id=1758030214 instance=ExtResource("5_0ehxk")]
-position = Vector2(589, -44)
+[node name="Ground5" parent="Grounds" unique_id=1591831160 instance=ExtResource("2_lmxa2")]
+position = Vector2(1802, -671)
+rotation = -0.47514194
 
-[node name="Laser" parent="." unique_id=950342774 instance=ExtResource("6_gu8el")]
-position = Vector2(-483, 1)
+[node name="Ground6" parent="Grounds" unique_id=785436 instance=ExtResource("2_lmxa2")]
+position = Vector2(3599, -1106)
 
-[node name="Spring" parent="." unique_id=601045878 instance=ExtResource("7_cskhc")]
-position = Vector2(-7, 176)
+[node name="Ground10" parent="Grounds" unique_id=274922529 instance=ExtResource("2_lmxa2")]
+position = Vector2(4147, -1106)
 
-[node name="Shuriken" parent="." unique_id=754958654 instance=ExtResource("8_q63y7")]
-position = Vector2(463, -166)
+[node name="Ground7" parent="Grounds" unique_id=1379077182 instance=ExtResource("2_lmxa2")]
+position = Vector2(-969.99994, 120.99999)
+rotation = 1.5678741
 
-[connection signal="FihDed" from="Fih" to="GameManager" method="RestartGame"]
+[node name="Ground8" parent="Grounds" unique_id=1905627583 instance=ExtResource("2_lmxa2")]
+position = Vector2(5273.9995, 189.00002)
+rotation = 1.5678741
+
+[node name="Ground11" parent="Grounds" unique_id=1466176179 instance=ExtResource("2_lmxa2")]
+position = Vector2(6059.9995, -675.0001)
+rotation = 1.5678741
+
+[node name="Ground13" parent="Grounds" unique_id=1326492058 instance=ExtResource("2_lmxa2")]
+position = Vector2(5069, -2090)
+rotation = 1.5678741
+
+[node name="Ground12" parent="Grounds" unique_id=2052300582 instance=ExtResource("2_lmxa2")]
+position = Vector2(6223.0005, 305)
+rotation = 3.139345
+
+[node name="Ground14" parent="Grounds" unique_id=406439598 instance=ExtResource("2_lmxa2")]
+position = Vector2(6065, -2327)
+
+[node name="Ground16" parent="Grounds" unique_id=2147122656 instance=ExtResource("2_lmxa2")]
+position = Vector2(7972, -2327)
+
+[node name="Ground23" parent="Grounds" unique_id=54410973 instance=ExtResource("2_lmxa2")]
+position = Vector2(9803, -2662)
+rotation = -0.36408377
+
+[node name="Ground17" parent="Grounds" unique_id=841796532 instance=ExtResource("2_lmxa2")]
+position = Vector2(8540, -1023)
+
+[node name="Ground18" parent="Grounds" unique_id=2123664639 instance=ExtResource("2_lmxa2")]
+position = Vector2(9278, -1602)
+
+[node name="Ground24" parent="Grounds" unique_id=1770635860 instance=ExtResource("2_lmxa2")]
+position = Vector2(11186, -1602)
+
+[node name="Ground30" parent="Grounds" unique_id=1393111195 instance=ExtResource("2_lmxa2")]
+position = Vector2(11633, -1602)
+
+[node name="Ground25" parent="Grounds" unique_id=1357305629 instance=ExtResource("2_lmxa2")]
+position = Vector2(11645, -3001)
+
+[node name="Ground29" parent="Grounds" unique_id=1060794049 instance=ExtResource("2_lmxa2")]
+position = Vector2(12585, -2210)
+rotation = 1.565984
+
+[node name="Ground26" parent="Grounds" unique_id=724572111 instance=ExtResource("2_lmxa2")]
+position = Vector2(10883, -3422)
+rotation = 1.5693364
+
+[node name="Ground27" parent="Grounds" unique_id=242207537 instance=ExtResource("2_lmxa2")]
+position = Vector2(10884, -1251.0002)
+rotation = 1.5693364
+
+[node name="Ground28" parent="Grounds" unique_id=1560753263 instance=ExtResource("2_lmxa2")]
+position = Vector2(11619, -3145.9998)
+rotation = 1.5693364
+
+[node name="Ground15" parent="Grounds" unique_id=54943131 instance=ExtResource("2_lmxa2")]
+position = Vector2(6977, -1599)
+
+[node name="Spikes" type="Node" parent="." unique_id=509500049]
+
+[node name="Set1" type="Node2D" parent="Spikes" unique_id=444526111]
+position = Vector2(124, 470)
+
+[node name="Spike2" parent="Spikes/Set1" unique_id=561044888 instance=ExtResource("3_mrjw3")]
+position = Vector2(-31, 0)
+
+[node name="Spike3" parent="Spikes/Set1" unique_id=621353998 instance=ExtResource("3_mrjw3")]
+position = Vector2(30, 0)
+
+[node name="Set3" type="Node2D" parent="Spikes" unique_id=395023384]
+position = Vector2(2824, -1070)
+
+[node name="Spike2" parent="Spikes/Set3" unique_id=1437070910 instance=ExtResource("3_mrjw3")]
+position = Vector2(-27, 0)
+rotation = 3.1415927
+
+[node name="Spike3" parent="Spikes/Set3" unique_id=695645116 instance=ExtResource("3_mrjw3")]
+position = Vector2(30, 0)
+rotation = 3.1415927
+
+[node name="Spike6" parent="Spikes/Set3" unique_id=2105381232 instance=ExtResource("3_mrjw3")]
+position = Vector2(-140, 0)
+rotation = 3.1415927
+
+[node name="Spike7" parent="Spikes/Set3" unique_id=1609777536 instance=ExtResource("3_mrjw3")]
+position = Vector2(-83, 0)
+rotation = 3.1415927
+
+[node name="Spike4" parent="Spikes/Set3" unique_id=1673114224 instance=ExtResource("3_mrjw3")]
+position = Vector2(87, 0)
+rotation = 3.1415927
+
+[node name="Spike5" parent="Spikes/Set3" unique_id=1980018624 instance=ExtResource("3_mrjw3")]
+position = Vector2(142, 0)
+rotation = 3.1415927
+
+[node name="Set2" type="Node2D" parent="Spikes" unique_id=693952415]
+position = Vector2(5236, -591)
+
+[node name="Spike4" parent="Spikes/Set2" unique_id=375264677 instance=ExtResource("3_mrjw3")]
+position = Vector2(1.0004883, -135.00006)
+rotation = -1.6347399
+
+[node name="Spike5" parent="Spikes/Set2" unique_id=237565973 instance=ExtResource("3_mrjw3")]
+position = Vector2(1, -82)
+rotation = -1.5707964
+
+[node name="Spike6" parent="Spikes/Set2" unique_id=1352059264 instance=ExtResource("3_mrjw3")]
+position = Vector2(1, -27)
+rotation = -1.5707964
+
+[node name="Spike7" parent="Spikes/Set2" unique_id=1110093302 instance=ExtResource("3_mrjw3")]
+position = Vector2(1, 28)
+rotation = -1.5707964
+
+[node name="Spike8" parent="Spikes/Set2" unique_id=823566052 instance=ExtResource("3_mrjw3")]
+position = Vector2(1, 84)
+rotation = -1.5707964
+
+[node name="Spike9" parent="Spikes/Set2" unique_id=373528276 instance=ExtResource("3_mrjw3")]
+position = Vector2(1, 141)
+rotation = -1.5707964
+
+[node name="Set4" type="Node2D" parent="Spikes" unique_id=871940214]
+position = Vector2(4837, -1074)
+rotation = -1.5738165
+
+[node name="Spike4" parent="Spikes/Set4" unique_id=1146152382 instance=ExtResource("3_mrjw3")]
+position = Vector2(1.0004883, -135.00006)
+rotation = -1.6347399
+
+[node name="Spike5" parent="Spikes/Set4" unique_id=17611855 instance=ExtResource("3_mrjw3")]
+position = Vector2(1, -82)
+rotation = -1.5707964
+
+[node name="Spike6" parent="Spikes/Set4" unique_id=534584859 instance=ExtResource("3_mrjw3")]
+position = Vector2(1, -27)
+rotation = -1.5707964
+
+[node name="Spike7" parent="Spikes/Set4" unique_id=1792956873 instance=ExtResource("3_mrjw3")]
+position = Vector2(1, 28)
+rotation = -1.5707964
+
+[node name="Spike8" parent="Spikes/Set4" unique_id=1672588842 instance=ExtResource("3_mrjw3")]
+position = Vector2(1, 84)
+rotation = -1.5707964
+
+[node name="Spike9" parent="Spikes/Set4" unique_id=714375333 instance=ExtResource("3_mrjw3")]
+position = Vector2(1, 141)
+rotation = -1.5707964
+
+[node name="Set5" type="Node2D" parent="Spikes" unique_id=1873914980]
+position = Vector2(5267, -2292)
+rotation = -1.5738165
+
+[node name="Spike4" parent="Spikes/Set5" unique_id=241987615 instance=ExtResource("3_mrjw3")]
+position = Vector2(-1.5280468, 39.995533)
+rotation = -1.5707964
+
+[node name="Spike5" parent="Spikes/Set5" unique_id=1098785960 instance=ExtResource("3_mrjw3")]
+position = Vector2(-1.5285351, 92.9956)
+rotation = -1.5707964
+
+[node name="Spike6" parent="Spikes/Set5" unique_id=1244243941 instance=ExtResource("3_mrjw3")]
+position = Vector2(-1.5285351, 147.99559)
+rotation = -1.5707964
+
+[node name="Spike7" parent="Spikes/Set5" unique_id=334253994 instance=ExtResource("3_mrjw3")]
+position = Vector2(-1.5285351, 202.99559)
+rotation = -1.5707964
+
+[node name="Spike8" parent="Spikes/Set5" unique_id=621738449 instance=ExtResource("3_mrjw3")]
+position = Vector2(-1.5285351, 258.9956)
+rotation = -1.5707964
+
+[node name="Spike9" parent="Spikes/Set5" unique_id=2052669171 instance=ExtResource("3_mrjw3")]
+position = Vector2(-1.5285351, 315.9956)
+rotation = -1.5707964
+
+[node name="Spike10" parent="Spikes/Set5" unique_id=352927888 instance=ExtResource("3_mrjw3")]
+position = Vector2(-1.9565461, 371.99823)
+rotation = -1.5707964
+
+[node name="Spike11" parent="Spikes/Set5" unique_id=1309566571 instance=ExtResource("3_mrjw3")]
+position = Vector2(-1.9570343, 424.9983)
+rotation = -1.5707964
+
+[node name="Spike12" parent="Spikes/Set5" unique_id=1616390504 instance=ExtResource("3_mrjw3")]
+position = Vector2(-1.9570343, 479.9983)
+rotation = -1.5707964
+
+[node name="Spike13" parent="Spikes/Set5" unique_id=96823360 instance=ExtResource("3_mrjw3")]
+position = Vector2(-1.9570343, 534.9983)
+rotation = -1.5707964
+
+[node name="Spike14" parent="Spikes/Set5" unique_id=1249262620 instance=ExtResource("3_mrjw3")]
+position = Vector2(-1.9570343, 590.9983)
+rotation = -1.5707964
+
+[node name="Spike15" parent="Spikes/Set5" unique_id=1224120520 instance=ExtResource("3_mrjw3")]
+position = Vector2(-1.9570343, 647.9983)
+rotation = -1.5707964
+
+[node name="LastSet" type="Node2D" parent="Spikes" unique_id=1894556610]
+position = Vector2(10048, -1995)
+rotation = 2.5525448
+
+[node name="Spike" parent="Spikes/LastSet" unique_id=1079629055 instance=ExtResource("3_mrjw3")]
+
+[node name="Spike2" parent="Spikes/LastSet" unique_id=515506194 instance=ExtResource("3_mrjw3")]
+position = Vector2(57.41211, -1.3271484)
+
+[node name="Spike3" parent="Spikes/LastSet" unique_id=944430752 instance=ExtResource("3_mrjw3")]
+position = Vector2(-20.417969, 694.74146)
+rotation = 0.10895707
+
+[node name="Spike4" parent="Spikes/LastSet" unique_id=1227131800 instance=ExtResource("3_mrjw3")]
+position = Vector2(-79.75879, 682.7532)
+rotation = 0.10895707
+
+[node name="Spike5" parent="Spikes/LastSet" unique_id=793212537 instance=ExtResource("3_mrjw3")]
+position = Vector2(-144.0918, 671.03687)
+rotation = 0.10895707
+
+[node name="Spike6" parent="Spikes/LastSet" unique_id=1065266039 instance=ExtResource("3_mrjw3")]
+position = Vector2(579.2676, 643.22705)
+rotation = 0.10895707
+
+[node name="Spike7" parent="Spikes/LastSet" unique_id=668800353 instance=ExtResource("3_mrjw3")]
+position = Vector2(524.43164, 302.30566)
+rotation = 0.10895707
+
+[node name="Spike8" parent="Spikes/LastSet" unique_id=567439814 instance=ExtResource("3_mrjw3")]
+position = Vector2(582.66797, 308.7456)
+rotation = 0.10895707
+
+[node name="Assembly" type="Node2D" parent="." unique_id=1142267095]
+
+[node name="Fih" parent="Assembly" unique_id=1287527928 node_paths=PackedStringArray("FihControls") instance=ExtResource("4_qd6nx")]
+FihControls = NodePath("../Gum")
+
+[node name="Gum" parent="Assembly" unique_id=1758030214 instance=ExtResource("5_0ehxk")]
+position = Vector2(68, 3)
+
+[node name="CheckpointManager" type="Node" parent="." unique_id=189860017 node_paths=PackedStringArray("Assembly", "Checkpoints")]
+script = ExtResource("11_cskhc")
+Assembly = NodePath("../Assembly")
+Checkpoints = [NodePath("../Checkpoints/Checkpoint"), NodePath("../Checkpoints/Checkpoint2"), NodePath("../Checkpoints/Checkpoint3")]
+
+[node name="Checkpoints" type="Node" parent="." unique_id=1710998107]
+
+[node name="Checkpoint" parent="Checkpoints" unique_id=917846600 instance=ExtResource("8_cskhc")]
+position = Vector2(-711, 322)
+
+[node name="Checkpoint4" parent="Checkpoints" unique_id=626409262 instance=ExtResource("8_cskhc")]
+position = Vector2(11628, -1824)
+
+[node name="Checkpoint2" parent="Checkpoints" unique_id=1864693619 instance=ExtResource("8_cskhc")]
+position = Vector2(4464, -637)
+
+[node name="Checkpoint3" parent="Checkpoints" unique_id=1216110116 instance=ExtResource("8_cskhc")]
+position = Vector2(8467, -1747)
+
+[node name="KnockovaSection" type="Node" parent="." unique_id=1383288350]
+
+[node name="Knockova" type="RigidBody2D" parent="KnockovaSection" unique_id=2058885774]
+position = Vector2(7817, -1880)
+mass = 0.4
+
+[node name="Sprite2D" type="Sprite2D" parent="KnockovaSection/Knockova" unique_id=1576682808]
+modulate = Color(0.42389056, 0.20765716, 9.62615e-08, 1)
+scale = Vector2(74.25035, 494.24997)
+texture = SubResource("CanvasTexture_xrivr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KnockovaSection/Knockova" unique_id=1514603382]
+shape = SubResource("RectangleShape2D_xrivr")
+
+[node name="Laser3" parent="KnockovaSection" unique_id=309722797 instance=ExtResource("6_gu8el")]
+position = Vector2(7966, -1099)
+rotation = -3.1415925
+
+[node name="Laser4" parent="KnockovaSection" unique_id=8444252 instance=ExtResource("6_gu8el")]
+position = Vector2(8032, -1099)
+rotation = -3.1415925
+
+[node name="Laser5" parent="KnockovaSection" unique_id=879585043 instance=ExtResource("6_gu8el")]
+position = Vector2(8104, -1099)
+rotation = -3.1415925
+
+[node name="Laser6" parent="KnockovaSection" unique_id=759367020 instance=ExtResource("6_gu8el")]
+position = Vector2(8172, -1098)
+rotation = -3.1415925
+
+[node name="Laser7" parent="KnockovaSection" unique_id=188437981 instance=ExtResource("6_gu8el")]
+position = Vector2(8239, -1098)
+rotation = -3.1415925
+
+[node name="Laser8" parent="KnockovaSection" unique_id=47773076 instance=ExtResource("6_gu8el")]
+position = Vector2(8304, -1099)
+rotation = -3.1415925
+
+[node name="Ninjas" type="Node2D" parent="." unique_id=1928923600]
+
+[node name="Ninja2" parent="Ninjas" unique_id=1453527115 instance=ExtResource("9_0ehxk")]
+position = Vector2(837, -155.99998)
+rotation = -0.539903
+ShootSpeed = 500.0
+
+[node name="Ninja3" parent="Ninjas" unique_id=487077628 instance=ExtResource("9_0ehxk")]
+position = Vector2(1435, 161)
+rotation = -3.0153415
+ShootSpeed = 500.0
+
+[node name="Ninja" parent="Ninjas" unique_id=1722593892 instance=ExtResource("9_0ehxk")]
+position = Vector2(5387, 215)
+rotation = -3.1415925
+ShootSpeed = 500.0
+ShootRate = 2.0
+
+[node name="Ninja4" parent="Ninjas" unique_id=596626865 instance=ExtResource("9_0ehxk")]
+position = Vector2(5919, 220)
+rotation = -3.1415925
+ShootSpeed = 500.0
+ShootRate = 2.0
+
+[node name="Ninja5" parent="Ninjas" unique_id=500662045 instance=ExtResource("9_0ehxk")]
+position = Vector2(5667, 217)
+rotation = -3.1415925
+ShootSpeed = 200.0
+ShootRate = 2.0
+
+[node name="Ninja6" parent="Ninjas" unique_id=1487024650 instance=ExtResource("9_0ehxk")]
+position = Vector2(8925, -1685.0001)
+rotation = -2.9034529
+scale = Vector2(0.9999999, 0.9999999)
+ShootSpeed = 300.0
+ShootRate = 1.0
+
+[node name="Ninja7" parent="Ninjas" unique_id=2115463098 instance=ExtResource("9_0ehxk")]
+position = Vector2(11544, -2292.9998)
+rotation = 1.5744219
+ShootSpeed = 1000.0
+ShootRate = 2.5
+
+[node name="Lasers" type="Node" parent="." unique_id=1267065857]
+
+[node name="Laser" parent="Lasers" unique_id=950342774 instance=ExtResource("6_gu8el")]
+position = Vector2(2134, -811.9999)
+rotation = -0.5322799
+Timed = true
+
+[node name="Laser2" parent="Lasers" unique_id=1451843031 instance=ExtResource("6_gu8el")]
+position = Vector2(3635, -1096)
+Timed = true
+
+[node name="Laser3" parent="Lasers" unique_id=2035725063 instance=ExtResource("6_gu8el")]
+position = Vector2(9445.001, -2454)
+rotation = -0.48532847
+
+[node name="Laser4" parent="Lasers" unique_id=178359091 instance=ExtResource("6_gu8el")]
+position = Vector2(10158, -2351)
+rotation = -0.57465327
+scale = Vector2(0.99999994, 0.99999994)
+
+[node name="FihUI" parent="." unique_id=1904827054 instance=ExtResource("12_gila6")]
+
+[node name="WinnersRoom" type="Node" parent="." unique_id=1482538375]
+
+[node name="obameme" type="Sprite2D" parent="WinnersRoom" unique_id=694287781]
+position = Vector2(12130, -1887)
+texture = ExtResource("5_gila6")
+
+[node name="WinText" type="RichTextLabel" parent="WinnersRoom" unique_id=1833170558]
+offset_left = 11784.0
+offset_top = -2249.0
+offset_right = 12473.0
+offset_bottom = -2023.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 100
+text = "YOU WON!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[editable path="FihUI"]

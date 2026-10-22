@@ -4,20 +4,20 @@
 [ext_resource type="Texture2D" uid="uid://btxj47yqkumfc" path="res://Sprites/silverfih.png" id="2_bl0o8"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xrivr"]
-radius = 32.4
-height = 234.4
+radius = 19.0
+height = 150.0
 
 [node name="Fih" type="RigidBody2D" unique_id=1287527928 groups=["Fih"]]
 mass = 0.5
 script = ExtResource("1_mq30r")
 
 [node name="Silverfih" type="Sprite2D" parent="." unique_id=1503723044]
-scale = Vector2(0.4, 0.4)
+scale = Vector2(0.25, 0.25)
 texture = ExtResource("2_bl0o8")
 offset = Vector2(-51, -7)
 
 [node name="FihCol" type="CollisionShape2D" parent="." unique_id=764275745]
-position = Vector2(-17, -5)
+position = Vector2(-12, -1)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_xrivr")
 

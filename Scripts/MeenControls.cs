@@ -24,6 +24,8 @@ public partial class MeenControls : RigidBody2D
 
     bool Inflating = false;
 
+    public bool IsDed = false;
+
     public override void _Ready()
     {
         GumShape = GumCol.Shape as CircleShape2D;
@@ -36,7 +38,7 @@ public partial class MeenControls : RigidBody2D
     {
         SprFixed = GumShape.Radius == MinRadius || GumShape.Radius == MaxRadius;
 
-        if(Input.IsActionPressed("Inflate"))
+        if(Input.IsActionPressed("Inflate") && !IsDed)
         {
             Inflating = true;
             GumShape.Radius += GrowRate*(float)delta;

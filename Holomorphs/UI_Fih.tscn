@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://b35cskmvwma0e"]
+
+[node name="FihUI" type="Control" unique_id=1904827054]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=453745560]
+
+[node name="R2Restart" type="RichTextLabel" parent="CanvasLayer" unique_id=284901309]
+offset_right = 548.0
+offset_bottom = 65.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 30
+text = "PRESS 'R' TO RESTART"
+
+[node name="DeathText" type="RichTextLabel" parent="CanvasLayer" unique_id=918688104]
+offset_left = 1165.0
+offset_right = 1914.0
+offset_bottom = 232.0
+theme_override_colors/default_color = Color(1, 0.2295354, 0.17418435, 1)
+theme_override_font_sizes/normal_font_size = 50
+text = "death msg goes here."
+horizontal_alignment = 2

@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://d6jjwq6jn43u"]
+
+[ext_resource type="Script" uid="uid://dhibbsvaksvwr" path="res://Scripts/Checkpoint.cs" id="1_oea44"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_xrivr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xrivr"]
+size = Vector2(100, 100)
+
+[node name="Checkpoint" type="Area2D" unique_id=917846600 node_paths=PackedStringArray("CheckVis")]
+script = ExtResource("1_oea44")
+CheckVis = NodePath("Sprite2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=940825159]
+modulate = Color(1, 0.31704524, 0.31476903, 1)
+scale = Vector2(100, 100)
+texture = SubResource("CanvasTexture_xrivr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=51941126]
+shape = SubResource("RectangleShape2D_xrivr")
+
+[connection signal="body_entered" from="." to="." method="Check"]

@@ -1,24 +1,35 @@
 [gd_scene format=3 uid="uid://dwbfcmhd58op3"]
 
 [ext_resource type="Script" uid="uid://btun3081e0m3w" path="res://Scripts/Shuriken.cs" id="1_wfjqr"]
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_13qdw"]
+[ext_resource type="Texture2D" uid="uid://cbr0eseatsfku" path="res://Sprites/Shuriken.png" id="2_x6j3e"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_13qdw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_b1lj4"]
-radius = 17.117243
+radius = 38.013157
 
-[node name="Shuriken" type="CharacterBody2D" unique_id=754958654]
+[sub_resource type="CanvasTexture" id="CanvasTexture_xrivr"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_x6j3e"]
+particle_flag_disable_z = true
+angular_velocity_min = -1.6093254e-05
+angular_velocity_max = 19.999983
+radial_velocity_min = 79.99998
+radial_velocity_max = 99.99998
+gravity = Vector3(0, 0, 0)
+scale_min = 5.0
+scale_max = 6.68
+
+[node name="Shuriken" type="CharacterBody2D" unique_id=754958654 node_paths=PackedStringArray("ShuriImpact", "ShuriGraphic")]
 script = ExtResource("1_wfjqr")
-BulletVelocity = Vector2(0, 100)
 RotSpeed = 5.0
+ShuriImpact = NodePath("ShurikenImpact")
+ShuriGraphic = NodePath("ShurikenSpr")
 
 [node name="ShurikenSpr" type="Sprite2D" parent="." unique_id=1647003112]
-modulate = Color(0.12955844, 0.12955847, 0.12955844, 1)
 position = Vector2(-4.7683716e-07, -4.7683716e-07)
-scale = Vector2(33.999996, 33.999996)
-texture = SubResource("CanvasTexture_13qdw")
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_x6j3e")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1322653096]
 shape = SubResource("CircleShape2D_13qdw")
@@ -28,5 +39,16 @@ disabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ShurikenArea" unique_id=983643515]
 shape = SubResource("CircleShape2D_b1lj4")
+
+[node name="ShurikenImpact" type="GPUParticles2D" parent="." unique_id=1823061966]
+modulate = Color(0, 0, 0, 1)
+emitting = false
+amount = 20
+texture = SubResource("CanvasTexture_xrivr")
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_x6j3e")
 
 [connection signal="body_entered" from="ShurikenArea" to="." method="Strike"]

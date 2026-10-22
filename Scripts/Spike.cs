@@ -7,7 +7,7 @@ public partial class Spike : Area2D
     {
         if(body.IsInGroup("Fih"))
         {
-            (body as MeenData).Die();
+            (body as MeenData).Die("spike'd");
         }
     }
 }

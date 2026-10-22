@@ -12,6 +12,7 @@ constant_linear_velocity = Vector2(0, -1000)
 shape = SubResource("RectangleShape2D_xrivr")
 
 [node name="SpringSpr" type="Sprite2D" parent="." unique_id=795932963]
+modulate = Color(0.9215144, 0.5197361, 0.7647981, 1)
 position = Vector2(-7.6293945e-06, -1.9073486e-06)
 scale = Vector2(200, 50.000004)
 texture = SubResource("CanvasTexture_xrivr")
