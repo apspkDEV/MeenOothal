@@ -27,6 +27,10 @@ window/stretch/aspect="expand"
 
 project/assembly_name="MeenOothal"
 
+[global_group]
+
+Fih="fih 🥀"
+
 [input]
 
 Inflate={
@@ -52,3 +56,4 @@ TiltLeft={
 [rendering]
 
 rendering_device/driver.windows="d3d12"
+environment/defaults/default_clear_color=Color(1, 1, 1, 1)

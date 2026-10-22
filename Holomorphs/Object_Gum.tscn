@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://dljbo1x8re3d8"]
+
+[ext_resource type="Script" uid="uid://cn5unh640q6ap" path="res://Scripts/MeenControls.cs" id="1_o4xbv"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_5h6k0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xrivr"]
+resource_local_to_scene = true
+
+[node name="Gum" type="RigidBody2D" unique_id=1758030214 node_paths=PackedStringArray("GumCol", "GumSpr")]
+continuous_cd = 1
+script = ExtResource("1_o4xbv")
+GumCol = NodePath("CollisionShape2D")
+GumSpr = NodePath("GumSpr")
+GrowRate = 10.0
+RiseRate = 1000.0
+TiltForce = 250.0
+MinRadius = 10.0
+MaxRadius = 100.0
+
+[node name="GumSpr" type="Sprite2D" parent="." unique_id=1698452450]
+modulate = Color(1, 0.4627451, 1, 1)
+position = Vector2(-6.2584877e-06, 1.4305115e-06)
+scale = Vector2(20, 20)
+texture = SubResource("CanvasTexture_5h6k0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1806791882]
+shape = SubResource("CircleShape2D_xrivr")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="." unique_id=832558149]
+position = Vector2(-10, 2)
+node_a = NodePath("..")
+node_b = NodePath("../../Fih")

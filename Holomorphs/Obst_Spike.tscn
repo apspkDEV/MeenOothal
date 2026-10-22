@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://dk8co8pvtpc6j"]
+
+[ext_resource type="Script" uid="uid://cx5xu7ks7gtkd" path="res://Scripts/Spike.cs" id="1_1w4xj"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_13qdw"]
+
+[node name="Spike" type="Area2D" unique_id=1437070910]
+script = ExtResource("1_1w4xj")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=954143606]
+self_modulate = Color(0.66245234, 0.66245234, 0.6624523, 1)
+position = Vector2(0, -45)
+scale = Vector2(60, 90)
+texture = SubResource("CanvasTexture_13qdw")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=356833478]
+position = Vector2(0, -60)
+polygon = PackedVector2Array(0, -30, 30, 60, -30, 60)
+
+[connection signal="body_entered" from="." to="." method="Impale"]

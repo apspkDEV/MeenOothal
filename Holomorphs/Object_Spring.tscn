@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dydrnaxtb3kic"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xrivr"]
+size = Vector2(200, 50)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_xrivr"]
+
+[node name="Spring" type="StaticBody2D" unique_id=601045878]
+constant_linear_velocity = Vector2(0, -1000)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=220979131]
+shape = SubResource("RectangleShape2D_xrivr")
+
+[node name="SpringSpr" type="Sprite2D" parent="." unique_id=795932963]
+position = Vector2(-7.6293945e-06, -1.9073486e-06)
+scale = Vector2(200, 50.000004)
+texture = SubResource("CanvasTexture_xrivr")

@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://ccrwfnqn5654j"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_xrivr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xrivr"]
+size = Vector2(1920, 72)
+
+[node name="Ground" type="StaticBody2D" unique_id=1655194842]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1392769346]
+scale = Vector2(1920, 71.5)
+texture = SubResource("CanvasTexture_xrivr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1353315190]
+shape = SubResource("RectangleShape2D_xrivr")

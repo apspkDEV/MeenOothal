@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://dwbfcmhd58op3"]
+
+[ext_resource type="Script" uid="uid://btun3081e0m3w" path="res://Scripts/Shuriken.cs" id="1_wfjqr"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_13qdw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_13qdw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b1lj4"]
+radius = 17.117243
+
+[node name="Shuriken" type="CharacterBody2D" unique_id=754958654]
+script = ExtResource("1_wfjqr")
+BulletVelocity = Vector2(0, 100)
+RotSpeed = 5.0
+
+[node name="ShurikenSpr" type="Sprite2D" parent="." unique_id=1647003112]
+modulate = Color(0.12955844, 0.12955847, 0.12955844, 1)
+position = Vector2(-4.7683716e-07, -4.7683716e-07)
+scale = Vector2(33.999996, 33.999996)
+texture = SubResource("CanvasTexture_13qdw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1322653096]
+shape = SubResource("CircleShape2D_13qdw")
+disabled = true
+
+[node name="ShurikenArea" type="Area2D" parent="." unique_id=259885629]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ShurikenArea" unique_id=983643515]
+shape = SubResource("CircleShape2D_b1lj4")
+
+[connection signal="body_entered" from="ShurikenArea" to="." method="Strike"]

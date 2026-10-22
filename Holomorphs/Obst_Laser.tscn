@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://dgb6odysrpp7n"]
+
+[ext_resource type="Script" uid="uid://b8j37y3d15fcd" path="res://Scripts/Laser.cs" id="1_6b7gp"]
+
+[node name="Laser" type="RayCast2D" unique_id=950342774 node_paths=PackedStringArray("LaserLine", "LaserTime")]
+target_position = Vector2(0, 1000)
+script = ExtResource("1_6b7gp")
+LaserLine = NodePath("LaserLine")
+LaserTime = NodePath("LaserTiming")
+
+[node name="LaserLine" type="Line2D" parent="." unique_id=1014405126]
+points = PackedVector2Array(0, 0, 0, 1000)
+default_color = Color(1, 0.26919734, 0.070061736, 1)
+
+[node name="LaserTiming" type="Timer" parent="." unique_id=572594314]
+process_callback = 0
+wait_time = 3.0
+autostart = true
+
+[connection signal="timeout" from="LaserTiming" to="." method="ToggleLaser"]

@@ -1,69 +1,48 @@
 [gd_scene format=3 uid="uid://bjjuvuqhj87cr"]
 
-[ext_resource type="Texture2D" uid="uid://btxj47yqkumfc" path="res://Sprites/silverfih.png" id="1_5h6k0"]
-[ext_resource type="Script" uid="uid://cn5unh640q6ap" path="res://Scripts/MeenControls.cs" id="2_mrjw3"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xrivr"]
-radius = 32.4
-height = 234.4
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_xrivr"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xrivr"]
-size = Vector2(1920, 72)
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_5h6k0"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_xrivr"]
+[ext_resource type="Script" uid="uid://blobgsx6kiji8" path="res://Scripts/GameManager.cs" id="1_xosgj"]
+[ext_resource type="PackedScene" uid="uid://ccrwfnqn5654j" path="res://Holomorphs/Object_Ground.tscn" id="2_lmxa2"]
+[ext_resource type="PackedScene" uid="uid://dk8co8pvtpc6j" path="res://Holomorphs/Obst_Spike.tscn" id="3_mrjw3"]
+[ext_resource type="PackedScene" uid="uid://2j7uqwxj5gj6" path="res://Holomorphs/Object_Fish.tscn" id="4_qd6nx"]
+[ext_resource type="PackedScene" uid="uid://dljbo1x8re3d8" path="res://Holomorphs/Object_Gum.tscn" id="5_0ehxk"]
+[ext_resource type="PackedScene" uid="uid://dgb6odysrpp7n" path="res://Holomorphs/Obst_Laser.tscn" id="6_gu8el"]
+[ext_resource type="PackedScene" uid="uid://dydrnaxtb3kic" path="res://Holomorphs/Object_Spring.tscn" id="7_cskhc"]
+[ext_resource type="PackedScene" uid="uid://dwbfcmhd58op3" path="res://Holomorphs/Obst_Shuriken.tscn" id="8_q63y7"]
 
 [node name="LevelSandbox" type="Node2D" unique_id=1856448929]
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1340471152]
+[node name="GameManager" type="Node" parent="." unique_id=1576994123]
+script = ExtResource("1_xosgj")
 
-[node name="Fih" type="RigidBody2D" parent="." unique_id=1173886342]
+[node name="Spike2" parent="." unique_id=561044888 instance=ExtResource("3_mrjw3")]
+position = Vector2(64, 475)
 
-[node name="Silverfih" type="Sprite2D" parent="Fih" unique_id=290106683]
-scale = Vector2(0.4, 0.4)
-texture = ExtResource("1_5h6k0")
-offset = Vector2(-51, -7)
+[node name="Spike3" parent="." unique_id=621353998 instance=ExtResource("3_mrjw3")]
+position = Vector2(125, 475)
 
-[node name="FihCol" type="CollisionShape2D" parent="Fih" unique_id=118949233]
-position = Vector2(-17, -5)
-rotation = 1.5707964
-shape = SubResource("CapsuleShape2D_xrivr")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1585934453]
+[node name="Ground" parent="." unique_id=1655194842 instance=ExtResource("2_lmxa2")]
 position = Vector2(0, 504)
 
-[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=1635461892]
-scale = Vector2(1920, 71.5)
-texture = SubResource("CanvasTexture_xrivr")
+[node name="Ground2" parent="." unique_id=1944018581 instance=ExtResource("2_lmxa2")]
+position = Vector2(1795, 69)
+rotation = -0.47514194
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1413198856]
-shape = SubResource("RectangleShape2D_xrivr")
+[node name="Ground3" parent="." unique_id=1129903527 instance=ExtResource("2_lmxa2")]
+position = Vector2(3592, -366)
 
-[node name="Gum" type="RigidBody2D" parent="." unique_id=1602983749 node_paths=PackedStringArray("GumCol", "GumSpr")]
-position = Vector2(107, 6)
-continuous_cd = 1
-script = ExtResource("2_mrjw3")
-GumCol = NodePath("CollisionShape2D")
-GumSpr = NodePath("GumSpr")
-GrowRate = 10.0
-RiseRate = 1000.0
-TiltForce = 500.0
-MinRadius = 10.0
-MaxRadius = 100.0
+[node name="Fih" parent="." unique_id=1287527928 instance=ExtResource("4_qd6nx")]
+position = Vector2(486, -50)
 
-[node name="GumSpr" type="Sprite2D" parent="Gum" unique_id=30891764]
-modulate = Color(1, 0.4627451, 1, 1)
-position = Vector2(-6.2584877e-06, 1.4305115e-06)
-scale = Vector2(20, 20)
-texture = SubResource("CanvasTexture_5h6k0")
+[node name="Gum" parent="." unique_id=1758030214 instance=ExtResource("5_0ehxk")]
+position = Vector2(589, -44)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Gum" unique_id=522407652]
-shape = SubResource("CircleShape2D_xrivr")
+[node name="Laser" parent="." unique_id=950342774 instance=ExtResource("6_gu8el")]
+position = Vector2(-483, 1)
 
-[node name="PinJoint2D" type="PinJoint2D" parent="." unique_id=1719900800]
-position = Vector2(99, 8)
-node_a = NodePath("../Gum")
-node_b = NodePath("../Fih")
+[node name="Spring" parent="." unique_id=601045878 instance=ExtResource("7_cskhc")]
+position = Vector2(-7, 176)
+
+[node name="Shuriken" parent="." unique_id=754958654 instance=ExtResource("8_q63y7")]
+position = Vector2(463, -166)
+
+[connection signal="FihDed" from="Fih" to="GameManager" method="RestartGame"]

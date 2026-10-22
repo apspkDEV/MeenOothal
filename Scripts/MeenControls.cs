@@ -16,21 +16,29 @@ public partial class MeenControls : RigidBody2D
 
     [Export] float MaxRadius;
 
+    [Export] float MinShape;
+
     CircleShape2D GumShape;
 
     bool SprFixed = true;
+
+    bool Inflating = false;
 
     public override void _Ready()
     {
         GumShape = GumCol.Shape as CircleShape2D;
         MinRadius = GumShape.Radius;
+        MinShape = GumSpr.Scale.Length();
         base._Ready();
     }
 
     public override void _PhysicsProcess(double delta)
     {
+        SprFixed = GumShape.Radius == MinRadius || GumShape.Radius == MaxRadius;
+
         if(Input.IsActionPressed("Inflate"))
         {
+            Inflating = true;
             GumShape.Radius += GrowRate*(float)delta;
             if(!SprFixed) GumSpr.Scale += GumSpr.Scale.Normalized() * 2 * GrowRate * (float)delta;
             ApplyCentralForce(-GetGravity() + Vector2.Up * RiseRate);
@@ -38,22 +46,31 @@ public partial class MeenControls : RigidBody2D
 
         else
         {
+            Inflating = false;
             GumShape.Radius -= GrowRate * (float)delta * 10;
-            if(!SprFixed) GumSpr.Scale -= GumSpr.Scale.Normalized() * 2 * GrowRate * (float)delta * 10;
+            if(!SprFixed) 
+            {
+                GumSpr.Scale -= GumSpr.Scale.Normalized() * 2 * GrowRate * (float)delta * 10;
+            }
+            else
+            {
+                GumSpr.Scale = GumSpr.Scale.Normalized() * MinShape;
+            }
         }
 
         GumShape.Radius = Mathf.Clamp(GumShape.Radius, MinRadius, MaxRadius);
 
-        SprFixed = GumShape.Radius == MinRadius || GumShape.Radius == MaxRadius;
 
-
-        if(Input.IsActionPressed("TiltRight"))
+        if(Inflating)
         {
-            ApplyCentralForce(Vector2.Right * TiltForce);
-        }
-        else if(Input.IsActionPressed("TiltLeft"))
-        {
-            ApplyCentralForce(Vector2.Left * TiltForce);
+            if(Input.IsActionPressed("TiltRight"))
+            {
+                ApplyCentralForce(Vector2.Right * TiltForce);
+            }
+            else if(Input.IsActionPressed("TiltLeft"))
+            {
+                ApplyCentralForce(Vector2.Left * TiltForce);
+            }
         }
         base._PhysicsProcess(delta);
     }
