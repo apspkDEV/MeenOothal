@@ -51,4 +51,4 @@ explosiveness = 1.0
 randomness = 1.0
 process_material = SubResource("ParticleProcessMaterial_x6j3e")
 
-[connection signal="body_entered" from="ShurikenArea" to="." method="Strike"]
+[connection signal="body_entered" from="ShurikenArea" to="." method="ARDamage"]

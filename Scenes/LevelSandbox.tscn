@@ -178,6 +178,33 @@ rotation = 3.1415927
 position = Vector2(142, 0)
 rotation = 3.1415927
 
+[node name="Set6" type="Node2D" parent="Spikes" unique_id=548391117]
+position = Vector2(-715, -201)
+
+[node name="Spike2" parent="Spikes/Set6" unique_id=4210221 instance=ExtResource("3_mrjw3")]
+position = Vector2(-27, 0)
+rotation = 3.1415927
+
+[node name="Spike3" parent="Spikes/Set6" unique_id=657961257 instance=ExtResource("3_mrjw3")]
+position = Vector2(30, 0)
+rotation = 3.1415927
+
+[node name="Spike6" parent="Spikes/Set6" unique_id=960373413 instance=ExtResource("3_mrjw3")]
+position = Vector2(-140, 0)
+rotation = 3.1415927
+
+[node name="Spike7" parent="Spikes/Set6" unique_id=1912737752 instance=ExtResource("3_mrjw3")]
+position = Vector2(-83, 0)
+rotation = 3.1415927
+
+[node name="Spike4" parent="Spikes/Set6" unique_id=1772462273 instance=ExtResource("3_mrjw3")]
+position = Vector2(87, 0)
+rotation = 3.1415927
+
+[node name="Spike5" parent="Spikes/Set6" unique_id=627381010 instance=ExtResource("3_mrjw3")]
+position = Vector2(142, 0)
+rotation = 3.1415927
+
 [node name="Set2" type="Node2D" parent="Spikes" unique_id=693952415]
 position = Vector2(5236, -591)
 
@@ -325,6 +352,10 @@ FihControls = NodePath("../Gum")
 
 [node name="Gum" parent="Assembly" unique_id=1758030214 instance=ExtResource("5_0ehxk")]
 position = Vector2(68, 3)
+RiseRate = 700.0
+TiltForce = 300.0
+MaxRadius = 50.0
+MinShape = 20.0
 
 [node name="CheckpointManager" type="Node" parent="." unique_id=189860017 node_paths=PackedStringArray("Assembly", "Checkpoints")]
 script = ExtResource("11_cskhc")

@@ -10,6 +10,7 @@ size = Vector2(100, 100)
 [node name="Checkpoint" type="Area2D" unique_id=917846600 node_paths=PackedStringArray("CheckVis")]
 script = ExtResource("1_oea44")
 CheckVis = NodePath("Sprite2D")
+CheckColor = Color(0.525953, 0.77730215, 0, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=940825159]
 modulate = Color(1, 0.31704524, 0.31476903, 1)

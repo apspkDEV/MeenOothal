@@ -13,7 +13,7 @@ public partial class CheckpointManager : Node
     {
         for(int i = 0; i <= Checkpoint; i++)
         {
-            GD.Print("Hi");
+            // GD.Print("Hi");
             (Checkpoints[i] as Checkpoint).Checked = true;
         }
         Assembly.GlobalPosition = Checkpoints[Checkpoint].GlobalPosition;

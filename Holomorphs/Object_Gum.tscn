@@ -17,6 +17,7 @@ RiseRate = 1000.0
 TiltForce = 250.0
 MinRadius = 10.0
 MaxRadius = 100.0
+PopCD = 1.0
 
 [node name="GumSpr" type="Sprite2D" parent="." unique_id=1698452450]
 modulate = Color(1, 0.4627451, 1, 1)

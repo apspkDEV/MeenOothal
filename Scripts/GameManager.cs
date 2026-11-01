@@ -10,6 +10,7 @@ public partial class GameManager : Node
     public override void _Ready()
     {
         DeathMsg = "";
+        Engine.TimeScale = 1;
         base._Ready();
     }
 

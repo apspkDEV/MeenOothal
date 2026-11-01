@@ -6,6 +6,8 @@ public partial class MeenControls : RigidBody2D
     [Export] CollisionShape2D GumCol;
     [Export] Sprite2D GumSpr;
 
+    [Export] Camera2D FihCam;
+
     [Export] float GrowRate;
 
     [Export] float RiseRate;
@@ -18,6 +20,10 @@ public partial class MeenControls : RigidBody2D
 
     [Export] float MinShape;
 
+    [Export] double PopCD;
+
+    double PopTimer;
+
     CircleShape2D GumShape;
 
     bool SprFixed = true;
@@ -25,6 +31,8 @@ public partial class MeenControls : RigidBody2D
     bool Inflating = false;
 
     public bool IsDed = false;
+
+    bool HasDeflated = false;
 
     public override void _Ready()
     {
@@ -38,7 +46,7 @@ public partial class MeenControls : RigidBody2D
     {
         SprFixed = GumShape.Radius == MinRadius || GumShape.Radius == MaxRadius;
 
-        if(Input.IsActionPressed("Inflate") && !IsDed)
+        if(Input.IsActionPressed("Inflate") && !(IsDed || HasDeflated))
         {
             Inflating = true;
             GumShape.Radius += GrowRate*(float)delta;
@@ -62,12 +70,23 @@ public partial class MeenControls : RigidBody2D
 
         GumShape.Radius = Mathf.Clamp(GumShape.Radius, MinRadius, MaxRadius);
 
+        if(HasDeflated)
+        {
+            PopTimer -= delta;
+            if(PopTimer <= 0) 
+            {
+                HasDeflated = false;
+            }
+        }
+
+        GumSpr.Visible = !HasDeflated;
 
         if(Inflating)
         {
             if(Input.IsActionPressed("TiltRight"))
             {
                 ApplyCentralForce(Vector2.Right * TiltForce);
+                // Deflate();
             }
             else if(Input.IsActionPressed("TiltLeft"))
             {
@@ -75,6 +94,20 @@ public partial class MeenControls : RigidBody2D
             }
         }
         base._PhysicsProcess(delta);
+    }
+
+    public override void _IntegrateForces(PhysicsDirectBodyState2D state)
+    {
+        base._IntegrateForces(state);
+    }
+
+
+    void Deflate()
+    {
+        GumShape.Radius = MinRadius;
+        GumSpr.Scale = GumSpr.Scale.Normalized() * MinShape;
+        PopTimer = PopCD;
+        HasDeflated = true;
     }
 
 }

@@ -22,10 +22,12 @@ LaserLine = NodePath("LaserLine")
 LaserParticles = NodePath("LaserParticles")
 LaserSpr = NodePath("LaserSpr")
 LaserTime = NodePath("LaserTiming")
+PermColor = Color(0.50980395, 0, 0.6509804, 1)
+ActiveColor = Color(1, 0.26919734, 0.070061736, 1)
+FadeColor = Color(1, 0.2716998, 0.07016479, 0.4)
 
 [node name="LaserLine" type="Line2D" parent="." unique_id=1014405126]
 points = PackedVector2Array(0, 0, 0, 1000)
-default_color = Color(1, 0.26919734, 0.070061736, 1)
 
 [node name="LaserTiming" type="Timer" parent="." unique_id=572594314]
 process_callback = 0
@@ -37,7 +39,7 @@ amount = 15
 process_material = SubResource("ParticleProcessMaterial_xrivr")
 
 [node name="LaserSpr" type="Sprite2D" parent="." unique_id=1688907903]
-modulate = Color(0.49355286, 0.057504393, 0, 1)
+self_modulate = Color(0.6495042, 0, 0.046619333, 1)
 scale = Vector2(45, 88.075)
 texture = SubResource("CanvasTexture_6b7gp")
 

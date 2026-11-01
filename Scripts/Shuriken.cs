@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class Shuriken : CharacterBody2D
+public partial class Shuriken : CharacterBody2D, IDamager
 {
     [Export] public Vector2 ShuriVelocity;
 
@@ -26,8 +26,7 @@ public partial class Shuriken : CharacterBody2D
         if (Lifetime < 0) CallDeferred(MethodName.QueueFree);
         base._PhysicsProcess(delta);
     }
-
-    public void Strike(Node2D body)
+    public void ARDamage(Node2D body)
     {
         ShuriImpact.Reparent(GetTree().Root);
         ShuriImpact.Emitting = true;
@@ -36,7 +35,14 @@ public partial class Shuriken : CharacterBody2D
             (body as MeenData).Die("ya got shuriken'd");
         }
 
+        if(body is MeenControls)
+        {
+            (body as MeenControls).CallDeferred(MeenControls.MethodName.Deflate);
+        }
+
         QueueFree();
     }
+
+    public void Damage(){}
 
 }

@@ -7,9 +7,10 @@
 radius = 19.0
 height = 150.0
 
-[node name="Fih" type="RigidBody2D" unique_id=1287527928 groups=["Fih"]]
+[node name="Fih" type="RigidBody2D" unique_id=1287527928 node_paths=PackedStringArray("FihCam") groups=["Fih"]]
 mass = 0.5
 script = ExtResource("1_mq30r")
+FihCam = NodePath("FihCam")
 
 [node name="Silverfih" type="Sprite2D" parent="." unique_id=1503723044]
 scale = Vector2(0.25, 0.25)
@@ -21,7 +22,7 @@ position = Vector2(-12, -1)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_xrivr")
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=516527793]
+[node name="FihCam" type="Camera2D" parent="." unique_id=516527793]
 process_callback = 0
 position_smoothing_enabled = true
 drag_horizontal_enabled = true

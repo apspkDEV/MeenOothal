@@ -16,4 +16,4 @@ texture = ExtResource("2_byyke")
 position = Vector2(0, -60)
 polygon = PackedVector2Array(0, -30, 28, 60, -26, 60)
 
-[connection signal="body_entered" from="." to="." method="Impale"]
+[connection signal="body_entered" from="." to="." method="ARDamage"]
