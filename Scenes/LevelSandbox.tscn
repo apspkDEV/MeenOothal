@@ -12,11 +12,21 @@
 [ext_resource type="PackedScene" uid="uid://b8b1gj70dilxs" path="res://Holomorphs/Obst_Ninja.tscn" id="9_0ehxk"]
 [ext_resource type="Script" uid="uid://jrfaitb88pox" path="res://Scripts/CheckpointManager.cs" id="11_cskhc"]
 [ext_resource type="PackedScene" uid="uid://b35cskmvwma0e" path="res://Holomorphs/UI_Fih.tscn" id="12_gila6"]
+[ext_resource type="Script" uid="uid://b0tpu33t37voa" path="res://Scripts/Rotator.cs" id="13_gila6"]
+[ext_resource type="Script" uid="uid://s6cgkdawhnlo" path="res://Scripts/Translator.cs" id="14_rwiq0"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_xrivr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xrivr"]
 size = Vector2(74, 492)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_dktb7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dktb7"]
+size = Vector2(100, 100)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w6hck"]
+size = Vector2(50, 50)
 
 [node name="LevelSandbox" type="Node2D" unique_id=1856448929]
 
@@ -356,6 +366,7 @@ RiseRate = 700.0
 TiltForce = 300.0
 MaxRadius = 50.0
 MinShape = 20.0
+PopCD = 0.0
 
 [node name="CheckpointManager" type="Node" parent="." unique_id=189860017 node_paths=PackedStringArray("Assembly", "Checkpoints")]
 script = ExtResource("11_cskhc")
@@ -393,26 +404,44 @@ shape = SubResource("RectangleShape2D_xrivr")
 [node name="Laser3" parent="KnockovaSection" unique_id=309722797 instance=ExtResource("6_gu8el")]
 position = Vector2(7966, -1099)
 rotation = -3.1415925
+PermColor = Color(0, 0, 0, 0)
+ActiveColor = Color(0, 0, 0, 0)
+FadeColor = Color(0, 0, 0, 0)
 
 [node name="Laser4" parent="KnockovaSection" unique_id=8444252 instance=ExtResource("6_gu8el")]
 position = Vector2(8032, -1099)
 rotation = -3.1415925
+PermColor = Color(0, 0, 0, 0)
+ActiveColor = Color(0, 0, 0, 0)
+FadeColor = Color(0, 0, 0, 0)
 
 [node name="Laser5" parent="KnockovaSection" unique_id=879585043 instance=ExtResource("6_gu8el")]
 position = Vector2(8104, -1099)
 rotation = -3.1415925
+PermColor = Color(0, 0, 0, 0)
+ActiveColor = Color(0, 0, 0, 0)
+FadeColor = Color(0, 0, 0, 0)
 
 [node name="Laser6" parent="KnockovaSection" unique_id=759367020 instance=ExtResource("6_gu8el")]
 position = Vector2(8172, -1098)
 rotation = -3.1415925
+PermColor = Color(0, 0, 0, 0)
+ActiveColor = Color(0, 0, 0, 0)
+FadeColor = Color(0, 0, 0, 0)
 
 [node name="Laser7" parent="KnockovaSection" unique_id=188437981 instance=ExtResource("6_gu8el")]
 position = Vector2(8239, -1098)
 rotation = -3.1415925
+PermColor = Color(0, 0, 0, 0)
+ActiveColor = Color(0, 0, 0, 0)
+FadeColor = Color(0, 0, 0, 0)
 
 [node name="Laser8" parent="KnockovaSection" unique_id=47773076 instance=ExtResource("6_gu8el")]
 position = Vector2(8304, -1099)
 rotation = -3.1415925
+PermColor = Color(0, 0, 0, 0)
+ActiveColor = Color(0, 0, 0, 0)
+FadeColor = Color(0, 0, 0, 0)
 
 [node name="Ninjas" type="Node2D" parent="." unique_id=1928923600]
 
@@ -495,5 +524,44 @@ theme_override_font_sizes/normal_font_size = 100
 text = "YOU WON!"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Rotator" type="RigidBody2D" parent="." unique_id=1358015390]
+position = Vector2(276, 101)
+rotation = 0.7853982
+gravity_scale = 0.0
+freeze_mode = 1
+continuous_cd = 1
+angular_damp_mode = 1
+script = ExtResource("13_gila6")
+RotSpeed = 45.0
+phase = 4.0
+dirChangeCD = 1.0
+isTrig = true
+finalRot = 90.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Rotator" unique_id=2049175723]
+modulate = Color(0.5739009, 0, 0.039109603, 1)
+scale = Vector2(100, 100)
+texture = SubResource("CanvasTexture_dktb7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rotator" unique_id=1094518255]
+shape = SubResource("RectangleShape2D_dktb7")
+
+[node name="Translator" type="RigidBody2D" parent="." unique_id=1954940293]
+gravity_scale = 0.0
+script = ExtResource("14_rwiq0")
+TraSpeed = 100.0
+isTimed = true
+phase = 3.0
+dirChangeCD = 1.0
+finalPos = Vector2(200, 0)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Translator" unique_id=268496011]
+modulate = Color(0.5739009, 0, 0.039109603, 1)
+scale = Vector2(50, 50)
+texture = SubResource("CanvasTexture_dktb7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Translator" unique_id=1051913190]
+shape = SubResource("RectangleShape2D_w6hck")
 
 [editable path="FihUI"]
