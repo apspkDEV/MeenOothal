@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://c5n5jd205pvn4"]
+
+[ext_resource type="PackedScene" uid="uid://bsuonika0eafl" path="res://Holomorphs/SceneManager.tscn" id="1_8saeu"]
+[ext_resource type="Script" uid="uid://mobwebmv1mpu" path="res://Scripts/LevelButton.cs" id="1_853f1"]
+[ext_resource type="PackedScene" uid="uid://bjjuvuqhj87cr" path="res://Scenes/LevelSandbox.tscn" id="3_8saeu"]
+
+[node name="MainMenu" type="Node2D" unique_id=479364116]
+
+[node name="SceneManager" parent="." unique_id=1817178561 instance=ExtResource("1_8saeu")]
+
+[node name="MainMenu" type="Control" parent="." unique_id=311684379]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu" unique_id=1470717300]
+layout_mode = 0
+offset_right = 457.0
+offset_bottom = 1085.0
+alignment = 1
+
+[node name="Title" type="RichTextLabel" parent="MainMenu/VBoxContainer" unique_id=1228222871]
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 50
+text = "MEEN OOTHAL"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="Start" type="Button" parent="MainMenu/VBoxContainer" unique_id=763820036]
+layout_mode = 2
+text = "START GAME"
+script = ExtResource("1_853f1")
+Level = ExtResource("3_8saeu")
+
+[node name="Settings" type="Button" parent="MainMenu/VBoxContainer" unique_id=1641960397]
+layout_mode = 2
+text = "SETTINGS"
+
+[node name="Quit" type="Button" parent="MainMenu/VBoxContainer" unique_id=1893462890]
+layout_mode = 2
+text = "QUIT "
+
+[connection signal="pressed" from="MainMenu/VBoxContainer/Start" to="MainMenu/VBoxContainer/Start" method="OnPress"]
+[connection signal="pressed" from="MainMenu/VBoxContainer/Quit" to="SceneManager" method="QuitGame"]

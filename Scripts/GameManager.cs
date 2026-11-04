@@ -7,8 +7,11 @@ public partial class GameManager : Node
 
     [Export] RichTextLabel DeathText;
 
+    [Export] PackedScene MainMenu;
+
     public override void _Ready()
     {
+        GD.Print(MainMenu.ResourceName);
         DeathMsg = "";
         Engine.TimeScale = 1;
         base._Ready();
@@ -27,11 +30,21 @@ public partial class GameManager : Node
         {
             CallDeferred(MethodName.RestartGame);
         }
+
+        if(Input.IsActionJustPressed("Return"))
+        {
+            CallDeferred(MethodName.ReturnToMainMenu);
+        }
         base._PhysicsProcess(delta);
     }
 
     public void RestartGame()
     {
         GetTree().CallDeferred(SceneTree.MethodName.ReloadCurrentScene);
+    }
+
+    public void ReturnToMainMenu()
+    {
+        GetTree().CallDeferred(SceneTree.MethodName.ChangeSceneToPacked, MainMenu);
     }
 }

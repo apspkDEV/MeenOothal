@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://bsuonika0eafl"]
+
+[ext_resource type="Script" uid="uid://d1c43r3q6c6fa" path="res://Scripts/SceneManager.cs" id="1_yueht"]
+
+[node name="SceneManager" type="Node" unique_id=1817178561]
+script = ExtResource("1_yueht")
+MainMenuFP = "C:/Users/Jithu/Desktop/GodotProjects/MeenOothal/MeenOothal/Scenes/MainMenu.tscn"

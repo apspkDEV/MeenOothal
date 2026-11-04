@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://blobgsx6kiji8" path="res://Scripts/GameManager.cs" id="1_xosgj"]
 [ext_resource type="PackedScene" uid="uid://ccrwfnqn5654j" path="res://Holomorphs/Object_Ground.tscn" id="2_lmxa2"]
+[ext_resource type="PackedScene" uid="uid://bsuonika0eafl" path="res://Holomorphs/SceneManager.tscn" id="3_gkpr6"]
 [ext_resource type="PackedScene" uid="uid://dk8co8pvtpc6j" path="res://Holomorphs/Obst_Spike.tscn" id="3_mrjw3"]
 [ext_resource type="PackedScene" uid="uid://2j7uqwxj5gj6" path="res://Holomorphs/Object_Fish.tscn" id="4_qd6nx"]
 [ext_resource type="PackedScene" uid="uid://dljbo1x8re3d8" path="res://Holomorphs/Object_Gum.tscn" id="5_0ehxk"]
@@ -33,6 +34,8 @@ size = Vector2(50, 50)
 [node name="GameManager" type="Node" parent="." unique_id=1576994123 node_paths=PackedStringArray("DeathText")]
 script = ExtResource("1_xosgj")
 DeathText = NodePath("../FihUI/CanvasLayer/DeathText")
+
+[node name="SceneManager" parent="." unique_id=1817178561 instance=ExtResource("3_gkpr6")]
 
 [node name="Spring" parent="." unique_id=601045878 instance=ExtResource("7_cskhc")]
 position = Vector2(4994, -329)
@@ -366,7 +369,7 @@ RiseRate = 700.0
 TiltForce = 300.0
 MaxRadius = 50.0
 MinShape = 20.0
-PopCD = 0.0
+PopCD = 2.0
 
 [node name="CheckpointManager" type="Node" parent="." unique_id=189860017 node_paths=PackedStringArray("Assembly", "Checkpoints")]
 script = ExtResource("11_cskhc")
@@ -563,5 +566,8 @@ texture = SubResource("CanvasTexture_dktb7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Translator" unique_id=1051913190]
 shape = SubResource("RectangleShape2D_w6hck")
+
+[node name="Spike" parent="Translator" unique_id=1597504695 instance=ExtResource("3_mrjw3")]
+position = Vector2(-1, -23)
 
 [editable path="FihUI"]
