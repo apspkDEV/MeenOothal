@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://cleg22l22o4tk"]
+
+[ext_resource type="Script" uid="uid://blobgsx6kiji8" path="res://Scripts/GameManager.cs" id="1_o7jng"]
+
+[node name="GameManager" type="Node" unique_id=2065144608 node_paths=PackedStringArray("DeathText")]
+script = ExtResource("1_o7jng")
+DeathText = NodePath("")

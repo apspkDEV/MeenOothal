@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bjjuvuqhj87cr"]
 
-[ext_resource type="Script" uid="uid://blobgsx6kiji8" path="res://Scripts/GameManager.cs" id="1_xosgj"]
+[ext_resource type="PackedScene" uid="uid://cleg22l22o4tk" path="res://Holomorphs/GameManager.tscn" id="1_gkpr6"]
 [ext_resource type="PackedScene" uid="uid://ccrwfnqn5654j" path="res://Holomorphs/Object_Ground.tscn" id="2_lmxa2"]
 [ext_resource type="PackedScene" uid="uid://bsuonika0eafl" path="res://Holomorphs/SceneManager.tscn" id="3_gkpr6"]
 [ext_resource type="PackedScene" uid="uid://dk8co8pvtpc6j" path="res://Holomorphs/Obst_Spike.tscn" id="3_mrjw3"]
@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://b8b1gj70dilxs" path="res://Holomorphs/Obst_Ninja.tscn" id="9_0ehxk"]
 [ext_resource type="Script" uid="uid://jrfaitb88pox" path="res://Scripts/CheckpointManager.cs" id="11_cskhc"]
 [ext_resource type="PackedScene" uid="uid://b35cskmvwma0e" path="res://Holomorphs/UI_Fih.tscn" id="12_gila6"]
-[ext_resource type="Script" uid="uid://b0tpu33t37voa" path="res://Scripts/Rotator.cs" id="13_gila6"]
+[ext_resource type="PackedScene" uid="uid://6yl483wq5f1c" path="res://Holomorphs/Object_Rotator.tscn" id="14_gkpr6"]
 [ext_resource type="PackedScene" uid="uid://ceasf8ifxn6o0" path="res://Holomorphs/Object_Translator.tscn" id="15_gkpr6"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_xrivr"]
@@ -21,16 +21,11 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xrivr"]
 size = Vector2(74, 492)
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_dktb7"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dktb7"]
-size = Vector2(100, 100)
-
 [node name="LevelSandbox" type="Node2D" unique_id=1856448929]
 
-[node name="GameManager" type="Node" parent="." unique_id=1576994123 node_paths=PackedStringArray("DeathText")]
-script = ExtResource("1_xosgj")
+[node name="GameManager" parent="." unique_id=2065144608 node_paths=PackedStringArray("DeathText", "SM") instance=ExtResource("1_gkpr6")]
 DeathText = NodePath("../FihUI/CanvasLayer/DeathText")
+SM = NodePath("../SceneManager")
 
 [node name="SceneManager" parent="." unique_id=1817178561 instance=ExtResource("3_gkpr6")]
 
@@ -525,27 +520,8 @@ text = "YOU WON!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Rotator" type="RigidBody2D" parent="." unique_id=1358015390]
+[node name="Rotator" parent="." unique_id=724038771 instance=ExtResource("14_gkpr6")]
 position = Vector2(276, 101)
-rotation = 0.7853982
-gravity_scale = 0.0
-freeze_mode = 1
-continuous_cd = 1
-angular_damp_mode = 1
-script = ExtResource("13_gila6")
-RotSpeed = 45.0
-phase = 4.0
-dirChangeCD = 1.0
-isTrig = true
-finalRot = 90.0
-
-[node name="Sprite2D" type="Sprite2D" parent="Rotator" unique_id=2049175723]
-modulate = Color(0.5739009, 0, 0.039109603, 1)
-scale = Vector2(100, 100)
-texture = SubResource("CanvasTexture_dktb7")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Rotator" unique_id=1094518255]
-shape = SubResource("RectangleShape2D_dktb7")
 
 [node name="Translator" parent="." unique_id=1292937362 instance=ExtResource("15_gkpr6")]
 sync_to_physics = false

@@ -4,6 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://bywf4apt2e688" path="res://Sprites/Spikes.png" id="2_byyke"]
 
 [node name="Spike" type="Area2D" unique_id=1437070910]
+collision_layer = 8
+collision_mask = 10
 script = ExtResource("1_1w4xj")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=954143606]

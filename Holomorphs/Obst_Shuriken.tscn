@@ -36,6 +36,8 @@ shape = SubResource("CircleShape2D_13qdw")
 disabled = true
 
 [node name="ShurikenArea" type="Area2D" parent="." unique_id=259885629]
+collision_layer = 8
+collision_mask = 15
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ShurikenArea" unique_id=983643515]
 shape = SubResource("CircleShape2D_b1lj4")

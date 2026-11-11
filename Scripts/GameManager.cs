@@ -8,8 +8,6 @@ public partial class GameManager : Node
     [Export] RichTextLabel DeathText;
     [Export] SceneManager SM;
 
-    [Export] PackedScene MainMenu;
-
     public override void _Ready()
     {
         SM = GetTree().CurrentScene.GetNode("SceneManager") as SceneManager;

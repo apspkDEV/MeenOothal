@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://6yl483wq5f1c"]
+
+[ext_resource type="Script" uid="uid://b0tpu33t37voa" path="res://Scripts/Rotator.cs" id="1_kav2y"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_dktb7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dktb7"]
+size = Vector2(100, 100)
+
+[node name="Rotator" type="AnimatableBody2D" unique_id=1401520705]
+collision_layer = 4
+collision_mask = 5
+script = ExtResource("1_kav2y")
+RotSpeed = 30.0
+isTimed = true
+phase = 2.0
+dirChangeCD = 2.0
+
+[node name="RotSpr" type="Sprite2D" parent="." unique_id=70250958]
+modulate = Color(0.5739009, 0, 0.039109603, 1)
+rotation = 0.7853982
+scale = Vector2(100, 100)
+texture = SubResource("CanvasTexture_dktb7")
+
+[node name="RotCol" type="CollisionShape2D" parent="." unique_id=1789114177]
+rotation = 0.7853982
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("RectangleShape2D_dktb7")

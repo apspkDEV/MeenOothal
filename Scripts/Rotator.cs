@@ -1,9 +1,7 @@
 using Godot;
 using System;
-using System.ComponentModel;
-using System.Runtime.Serialization;
 
-public partial class Rotator : RigidBody2D
+public partial class Rotator : AnimatableBody2D
 {
 	// In degrees per second.
 	[Export] float RotSpeed = 0.0f;
@@ -12,6 +10,7 @@ public partial class Rotator : RigidBody2D
 	[Export] double phase = 0.0;
 	[Export] double dirChangeCD = 0.0;
 	double dirChangeTimer;
+	[Export] int dir = 1;
 
 	[ExportGroup("Trigger")]
 	[Export] bool isTrig = false;
@@ -24,8 +23,7 @@ public partial class Rotator : RigidBody2D
 	{
 		if(isTimed)
 		{
-			dirChangeTimer = phase;
-			AngularVelocity = RotSpeed;		
+			dirChangeTimer = phase;	
 		}
 	}
 
@@ -36,6 +34,7 @@ public partial class Rotator : RigidBody2D
 		if(isTimed)
 		{	
 			dirChangeTimer -= delta;
+			Rotate(Mathf.DegToRad(RotSpeed*dir*(float)delta));
 			if(dirChangeTimer <= 0)
 			{
 				ChangeDirection();
@@ -47,7 +46,7 @@ public partial class Rotator : RigidBody2D
 		{
 			if(Triggered)
 			{
-				RotationDegrees = Mathf.MoveToward(RotationDegrees, finalRot, RotSpeed * (float)delta);
+				RotationDegrees = Mathf.MoveToward(RotationDegrees, finalRot, RotSpeed * dir * (float)delta);
 			}
 		}
 	}
@@ -55,7 +54,7 @@ public partial class Rotator : RigidBody2D
 	void ChangeDirection()
 	{
 		dirChangeTimer = dirChangeCD;
-		AngularVelocity *= -1;
+		dir *= -1;
 	}
 
 	void SetTrigger()

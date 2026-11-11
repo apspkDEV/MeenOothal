@@ -9,7 +9,7 @@ size = Vector2(50, 50)
 
 [node name="Translator" type="AnimatableBody2D" unique_id=1167016575]
 collision_layer = 4
-collision_mask = 6
+collision_mask = 5
 script = ExtResource("1_a6n01")
 TraSpeed = 200.0
 phase = 2.0
