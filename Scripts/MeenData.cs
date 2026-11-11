@@ -43,7 +43,7 @@ public partial class MeenData : RigidBody2D
         Tween CamTween = GetTree().CreateTween();
         CamTween.SetIgnoreTimeScale(true);
         CamTween.TweenProperty(FihCam, "position", GlobalPosition, 1f);
-        CamTween.Parallel().TweenProperty(FihCam, "zoom", Vector2.One * 3.5f, 1f);
+        CamTween.Parallel().TweenProperty(FihCam, "zoom", Vector2.One * 3.5f, 1f).SetTrans(Tween.TransitionType.Cubic).SetEase(Tween.EaseType.Out);
 
         EmitSignal(SignalName.FihDed);
     }

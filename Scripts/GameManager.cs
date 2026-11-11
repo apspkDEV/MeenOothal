@@ -6,14 +6,17 @@ public partial class GameManager : Node
     public static string DeathMsg = "";
 
     [Export] RichTextLabel DeathText;
+    [Export] SceneManager SM;
 
     [Export] PackedScene MainMenu;
 
     public override void _Ready()
     {
-        GD.Print(MainMenu.ResourceName);
+        SM = GetTree().CurrentScene.GetNode("SceneManager") as SceneManager;
+        // GD.Print(MainMenu.ResourceName);
         DeathMsg = "";
         Engine.TimeScale = 1;
+        GD.Print("Huh");
         base._Ready();
     }
 
@@ -33,7 +36,7 @@ public partial class GameManager : Node
 
         if(Input.IsActionJustPressed("Return"))
         {
-            CallDeferred(MethodName.ReturnToMainMenu);
+            SM.CallDeferred(SceneManager.MethodName.ReturnToMainMenu);
         }
         base._PhysicsProcess(delta);
     }
@@ -41,10 +44,5 @@ public partial class GameManager : Node
     public void RestartGame()
     {
         GetTree().CallDeferred(SceneTree.MethodName.ReloadCurrentScene);
-    }
-
-    public void ReturnToMainMenu()
-    {
-        GetTree().CallDeferred(SceneTree.MethodName.ChangeSceneToPacked, MainMenu);
     }
 }
