@@ -36,7 +36,6 @@ script = ExtResource("1_xosgj")
 DeathText = NodePath("../FihUI/CanvasLayer/DeathText")
 
 [node name="SceneManager" parent="." unique_id=1817178561 instance=ExtResource("3_gkpr6")]
-MainMenuFP = "D:/GameDevelopment/Projects/MeenOothal/Scenes/MainMenu.tscn"
 
 [node name="Spring" parent="." unique_id=601045878 instance=ExtResource("7_cskhc")]
 position = Vector2(4994, -329)

@@ -4,4 +4,4 @@
 
 [node name="SceneManager" type="Node" unique_id=1817178561]
 script = ExtResource("1_yueht")
-MainMenuFP = "C:/Users/Jithu/Desktop/GodotProjects/MeenOothal/MeenOothal/Scenes/MainMenu.tscn"
+MainMenuFP = "res://Scenes/MainMenu.tscn"
