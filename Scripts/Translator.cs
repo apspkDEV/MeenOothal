@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class Translator : RigidBody2D
+public partial class Translator : AnimatableBody2D
 {
 	[Export] float TraSpeed = 0.0f;
 	[ExportGroup("Timing")]
@@ -20,8 +20,7 @@ public partial class Translator : RigidBody2D
 	{
 		if(isTimed)
 		{
-			dirChangeTimer = phase;
-			LinearVelocity = Transform.X.Normalized() * TraSpeed;		
+			dirChangeTimer = phase;	
 		}
 	}
 
@@ -33,6 +32,8 @@ public partial class Translator : RigidBody2D
 		if(isTimed)
 		{	
 			dirChangeTimer -= delta;
+			Vector2 Velocity = Transform.X.Normalized() * TraSpeed;	
+			MoveAndCollide(Velocity*(float)delta);
 			if(dirChangeTimer <= 0)
 			{
 				ChangeDirection();
@@ -51,7 +52,7 @@ public partial class Translator : RigidBody2D
 	void ChangeDirection()
 	{
 		dirChangeTimer = dirChangeCD;
-		LinearVelocity *= -1;
+		TraSpeed *= -1;
 	}
 
 	void SetTrigger()

@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://2j7uqwxj5gj6"]
 
+[ext_resource type="PhysicsMaterial" uid="uid://7i0y6jxenlmv" path="res://Physics/FihPhysics.tres" id="1_bl0o8"]
 [ext_resource type="Script" uid="uid://dvka3155qk316" path="res://Scripts/MeenData.cs" id="1_mq30r"]
 [ext_resource type="Texture2D" uid="uid://btxj47yqkumfc" path="res://Sprites/silverfih.png" id="2_bl0o8"]
 
@@ -8,7 +9,9 @@ radius = 19.0
 height = 150.0
 
 [node name="Fih" type="RigidBody2D" unique_id=1287527928 node_paths=PackedStringArray("FihCam") groups=["Fih"]]
+collision_mask = 6
 mass = 0.5
+physics_material_override = ExtResource("1_bl0o8")
 script = ExtResource("1_mq30r")
 FihCam = NodePath("FihCam")
 

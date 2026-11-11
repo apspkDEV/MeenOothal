@@ -12,13 +12,13 @@ public partial class MeenData : RigidBody2D
 
     public override void _Ready()
     {
-        GD.Print(FihCam.GetParent().Name);
+        // GD.Print(FihCam.GetParent().Name);
         base._Ready();
     }
 
     public override void _PhysicsProcess(double delta)
     {
-        GD.Print(FihCam.GlobalPosition);
+        // GD.Print(FihCam.GlobalPosition);
         if(GlobalPosition.Y > 1500)
         {
             Die("dawg how did you even achieve this one");

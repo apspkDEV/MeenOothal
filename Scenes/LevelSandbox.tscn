@@ -14,7 +14,7 @@
 [ext_resource type="Script" uid="uid://jrfaitb88pox" path="res://Scripts/CheckpointManager.cs" id="11_cskhc"]
 [ext_resource type="PackedScene" uid="uid://b35cskmvwma0e" path="res://Holomorphs/UI_Fih.tscn" id="12_gila6"]
 [ext_resource type="Script" uid="uid://b0tpu33t37voa" path="res://Scripts/Rotator.cs" id="13_gila6"]
-[ext_resource type="Script" uid="uid://s6cgkdawhnlo" path="res://Scripts/Translator.cs" id="14_rwiq0"]
+[ext_resource type="PackedScene" uid="uid://ceasf8ifxn6o0" path="res://Holomorphs/Object_Translator.tscn" id="15_gkpr6"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_xrivr"]
 
@@ -25,9 +25,6 @@ size = Vector2(74, 492)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dktb7"]
 size = Vector2(100, 100)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_w6hck"]
-size = Vector2(50, 50)
 
 [node name="LevelSandbox" type="Node2D" unique_id=1856448929]
 
@@ -550,24 +547,8 @@ texture = SubResource("CanvasTexture_dktb7")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rotator" unique_id=1094518255]
 shape = SubResource("RectangleShape2D_dktb7")
 
-[node name="Translator" type="RigidBody2D" parent="." unique_id=1954940293]
-gravity_scale = 0.0
-script = ExtResource("14_rwiq0")
-TraSpeed = 100.0
+[node name="Translator" parent="." unique_id=1292937362 instance=ExtResource("15_gkpr6")]
+sync_to_physics = false
 isTimed = true
-phase = 3.0
-dirChangeCD = 1.0
-finalPos = Vector2(200, 0)
-
-[node name="Sprite2D2" type="Sprite2D" parent="Translator" unique_id=268496011]
-modulate = Color(0.5739009, 0, 0.039109603, 1)
-scale = Vector2(50, 50)
-texture = SubResource("CanvasTexture_dktb7")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Translator" unique_id=1051913190]
-shape = SubResource("RectangleShape2D_w6hck")
-
-[node name="Spike" parent="Translator" unique_id=1597504695 instance=ExtResource("3_mrjw3")]
-position = Vector2(-1, -23)
 
 [editable path="FihUI"]
